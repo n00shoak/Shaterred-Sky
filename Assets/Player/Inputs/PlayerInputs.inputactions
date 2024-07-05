@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "MovementActionA",
                     "type": "Button",
                     "id": "0b7fa120-d554-46a3-aa3d-587558c29921",
                     "expectedControlType": "Button",
@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Crouch",
+                    "name": "MovementActionB",
                     "type": "Button",
                     "id": "3c8bc8f6-d8d3-4749-ad2d-64eb0c8d1379",
                     "expectedControlType": "Button",
@@ -116,18 +116,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "MovementActionA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96cf2285-6ef2-4211-9c8f-b4764b727861",
+                    "path": "<Mouse>/forwardButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "MovementActionA",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "b803f0ce-352a-4eb9-aa9c-475831b838b1",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "Default",
-                    "action": "Crouch",
+                    "action": "MovementActionB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62a0e792-024f-4cb1-81a3-d82a2b749a04",
+                    "path": "<Mouse>/backButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "MovementActionB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
