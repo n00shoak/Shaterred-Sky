@@ -5,21 +5,32 @@ using UnityEngine.Events;
 
 public class SY_PlayState : StateMachineBehaviour
 {
-    public int toPlay;
+    public int onEnter,onUpdate,onExit;
+    private SY_PlayerMovement mvmScript;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        mvmScript = GameObject.Find("Player").GetComponent<SY_PlayerMovement>();
+        if (mvmScript != null)
+        {
+            mvmScript.states[onEnter].Invoke();
+        }
+        else
+        {
+            Debug.LogError("SY_PLAYSTATE : script not found >> SY_PlayerMovement ");
+        }
+
+        mvmScript.HorizontalMovement();
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        SY_PlayerMovement mvmScript = GameObject.Find("Player").GetComponent<SY_PlayerMovement>();
+        mvmScript = GameObject.Find("Player").GetComponent<SY_PlayerMovement>();
         if (mvmScript != null) 
         {
-            mvmScript.states[toPlay].Invoke();
+            mvmScript.states[onUpdate].Invoke();
         }
         else
         {
@@ -30,20 +41,19 @@ public class SY_PlayState : StateMachineBehaviour
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        mvmScript = GameObject.Find("Player").GetComponent<SY_PlayerMovement>();
+        if (mvmScript != null)
+        {
+            mvmScript.states[onExit].Invoke();
+        }
+        else
+        {
+            Debug.LogError("SY_PLAYSTATE : script not found >> SY_PlayerMovement ");
+        }
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
+        mvmScript.HorizontalMovement();
+    }
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }
