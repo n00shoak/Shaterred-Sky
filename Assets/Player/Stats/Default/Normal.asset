@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementType: 1
   maxJump: 2
-  Speed: 5
+  boostLength: 30
+  speed: 5
+  sprintSpeed: 7
   drag: 4
+  boostStrength: 100

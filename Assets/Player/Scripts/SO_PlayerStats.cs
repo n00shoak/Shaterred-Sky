@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerDefaultStats", menuName = "PlayerDefaultStats", order = 0)]
 public class SO_PlayerStats : ScriptableObject
 {
-    public int movementType,maxJump;
-    public float Speed,drag;
+    public int movementType,maxJump , boostLength;
+    public float speed, sprintSpeed, drag,boostStrength;
 
 }

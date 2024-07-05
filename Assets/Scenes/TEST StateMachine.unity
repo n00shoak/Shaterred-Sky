@@ -281,8 +281,11 @@ MonoBehaviour:
     type: 2}
   movementType: 0
   maxJump: 1
+  boostLength: 0
   speed: 0
+  sprintSpeed: 0
   drag: 0
+  boostStrength: 0
 --- !u!54 &835287642
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -319,18 +322,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 835287636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07746c44ebe45fb469ba7fbdf3b56463, type: 3}
+  m_Script: {fileID: 11500000, guid: 95705210cf72b4f47a53418e50021c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Move: {fileID: -3554783896487341441, guid: 35628eb5aef1ecb4f88d3f4a72469a9e, type: 3}
-  stats: {fileID: 0}
-  rb: {fileID: 0}
   states:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 835287643}
-        m_TargetAssemblyTypeName: SY_PlayerMovement, Assembly-CSharp
-        m_MethodName: PrintStuff
+        m_TargetAssemblyTypeName: SY_PlayerStates, Assembly-CSharp
+        m_MethodName: nothing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -343,7 +344,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 835287643}
-        m_TargetAssemblyTypeName: SY_PlayerMovement, Assembly-CSharp
+        m_TargetAssemblyTypeName: SY_PlayerStates, Assembly-CSharp
         m_MethodName: HorizontalMovement
         m_Mode: 1
         m_Arguments:
@@ -357,7 +358,21 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 835287643}
-        m_TargetAssemblyTypeName: SY_PlayerMovement, Assembly-CSharp
+        m_TargetAssemblyTypeName: SY_PlayerStates, Assembly-CSharp
+        m_MethodName: Sprint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 835287643}
+        m_TargetAssemblyTypeName: SY_PlayerStates, Assembly-CSharp
         m_MethodName: Boost
         m_Mode: 1
         m_Arguments:

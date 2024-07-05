@@ -30,7 +30,6 @@ public class playermovement_statemachine_transitionchecker : MonoBehaviour
         mvmActionB.action.canceled += MvmActionBEnd;
 
         mvmActionA.action.started += MvmActionAStart;
-        mvmActionA.action.canceled += MvmActionAEnd;
     }
 
 
@@ -59,12 +58,9 @@ public class playermovement_statemachine_transitionchecker : MonoBehaviour
     // Set mvmActionA State
     public void MvmActionAStart(InputAction.CallbackContext obj)
     {
-        blackBoard.SetBool("mvmActionA", true);
+        blackBoard.SetTrigger("mvmActionA");
     }
-    public void MvmActionAEnd(InputAction.CallbackContext obj)
-    {
-        blackBoard.SetBool("mvmActionA", false);
-    }
+
 
 
     // Set mvmActionB State

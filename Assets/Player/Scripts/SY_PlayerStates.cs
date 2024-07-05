@@ -4,20 +4,26 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class playermovement_statemachine_stateAction : MonoBehaviour
+public class SY_PlayerStates : MonoBehaviour
 {
     [SerializeField] private InputActionReference Move;
-    [SerializeField] private DT_PlayerStats stats;
-    [SerializeField] private Rigidbody rb;
     [SerializeField] public UnityEvent[] states;
-    private int boost;
-    private float speed;
+
+    private DT_PlayerStats stats;
+    private Rigidbody rb;
+
+    private int boost = 50;
 
 
     private void Awake()
     {
         stats = GetComponent<DT_PlayerStats>();
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable()
+    {
+        boost = stats.boostLength;
     }
 
     public void nothing()
@@ -29,17 +35,20 @@ public class playermovement_statemachine_stateAction : MonoBehaviour
     {
         Vector2 dir = Move.action.ReadValue<Vector2>();
         rb.AddForce(new Vector3(dir.x, 0, dir.y) * stats.speed);
+        Debug.Log(stats.speed);
     }
 
     public void Sprint()
     {
         Vector2 dir = Move.action.ReadValue<Vector2>();
-        rb.AddForce(new Vector3(dir.x, 0, dir.y) * (stats.speed * 2 ));
+        rb.AddForce(new Vector3(dir.x, 0, dir.y) * (stats.sprintSpeed ));
     }
 
     public void Boost()
     {
-        if(boost == 100)
+        Debug.Log("Boosting");
+
+        if (boost == stats.boostLength)
         {
             StartCoroutine(Boosting());
         }
@@ -48,11 +57,10 @@ public class playermovement_statemachine_stateAction : MonoBehaviour
     private IEnumerator Boosting()
     {
 
+        rb.AddForce(transform.forward * stats.boostStrength);
         yield return new WaitForEndOfFrame();
-        rb.AddForce(transform.forward * 1f);
-
-        if (boost > 0) { StartCoroutine(Boosting()); }
-        else { boost = 100; }
+        if (boost > 0) {boost --; StartCoroutine(Boosting()); }
+        else { boost = stats.boostLength; }
 
     }
 
