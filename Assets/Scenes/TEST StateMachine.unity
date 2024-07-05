@@ -258,10 +258,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackBoard: {fileID: 835287638}
-  Jump: {fileID: -5277305470876881046, guid: 35628eb5aef1ecb4f88d3f4a72469a9e, type: 3}
   move: {fileID: -3554783896487341441, guid: 35628eb5aef1ecb4f88d3f4a72469a9e, type: 3}
-  jumpleft: 0
-  maxJump: 1
+  sprint: {fileID: 7177848823830969397, guid: 35628eb5aef1ecb4f88d3f4a72469a9e, type: 3}
+  mvmActionB: {fileID: -2051573337280764642, guid: 35628eb5aef1ecb4f88d3f4a72469a9e,
+    type: 3}
+  mvmActionA: {fileID: -5277305470876881046, guid: 35628eb5aef1ecb4f88d3f4a72469a9e,
+    type: 3}
   groundDist: 1.3
 --- !u!114 &835287641
 MonoBehaviour:
@@ -278,7 +280,7 @@ MonoBehaviour:
   selectedDefaultStats: {fileID: 11400000, guid: c95adfcc46094c34494c80429463a823,
     type: 2}
   movementType: 0
-  maxJump: 0
+  maxJump: 1
   speed: 0
   drag: 0
 --- !u!54 &835287642
@@ -343,6 +345,20 @@ MonoBehaviour:
       - m_Target: {fileID: 835287643}
         m_TargetAssemblyTypeName: SY_PlayerMovement, Assembly-CSharp
         m_MethodName: HorizontalMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 835287643}
+        m_TargetAssemblyTypeName: SY_PlayerMovement, Assembly-CSharp
+        m_MethodName: Boost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -16,6 +16,7 @@ public class DT_PlayerStats : MonoBehaviour
         maxJump = selectedDefaultStats.maxJump;
         speed = selectedDefaultStats.Speed;
         drag = selectedDefaultStats.drag;
+        
     }
 
    
